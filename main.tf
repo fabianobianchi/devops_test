@@ -25,13 +25,13 @@ data "template_file" "EC2toSSM_policy" {
 }
 
 resource "aws_iam_role" "EC2toSSM_role" {
-  name                          = "${var.app_name}-${terraform.workspace}-role"
+  name                          = "${var.app_name}-${var.environment}-role"
   assume_role_policy            = "${data.template_file.EC2toSSM_role.rendered}"
 }
 
 resource "aws_iam_policy" "EC2toSSM_policy" {
-  name                          = "${var.app_name}-${terraform.workspace}-policy"
-  description                   = "${var.app_name}-${terraform.workspace} policy to allow EC2 to access SSM"
+  name                          = "${var.app_name}-${var.environment}-policy"
+  description                   = "${var.app_name}-${var.environment} policy to allow EC2 to access SSM"
   policy                        = "${data.template_file.EC2toSSM_policy.rendered}"
 }
 
@@ -40,7 +40,7 @@ resource "aws_iam_role_policy_attachment" "policy_attachment" {
     policy_arn                  = "${aws_iam_policy.EC2toSSM_policy.arn}"
 }
 resource "aws_iam_instance_profile" "instance_profile" {
-  name                          = "${var.app_name}-${terraform.workspace}-instance-profile"
+  name                          = "${var.app_name}-${var.environment}-instance-profile"
   path                          = "/"
   role                          = "${aws_iam_role.EC2toSSM_role.id}"
 }
@@ -67,7 +67,7 @@ data "aws_ami" "ami_linux" {
 
 /* SECURITY GROUP EC2 INSTANCE */
 resource "aws_security_group" "ec2_security_group" {
-  name                          = "${var.app_name}-${terraform.workspace}-ec2-sg"
+  name                          = "${var.app_name}-${var.environment}-ec2-sg"
   vpc_id                        = "${var.vpc_id}"
 
   ingress {
@@ -92,8 +92,8 @@ resource "aws_security_group" "ec2_security_group" {
   }
 
   tags {
-    Name                        = "${var.app_name} ${terraform.workspace} EC2 SG"
-    Environment                 = "${terraform.workspace}"
+    Name                        = "${var.app_name} ${var.environment} EC2 SG"
+    Environment                 = "${var.environment}"
     Type                        = "SecurityGroup"
   }
 }
@@ -101,7 +101,7 @@ resource "aws_security_group" "ec2_security_group" {
 /* SECURITY GROUP ELB */
 
 resource "aws_security_group" "elb_security_group" {
-  name                          = "${var.app_name}-${terraform.workspace}-elb-sg"
+  name                          = "${var.app_name}-${var.environment}-elb-sg"
   vpc_id                        = "${var.vpc_id}"
 
   ingress {
@@ -119,8 +119,8 @@ resource "aws_security_group" "elb_security_group" {
   }
 
   tags {
-    Name                        = "${var.app_name} ${terraform.workspace} ELB SG"
-    Environment                 = "${terraform.workspace}"
+    Name                        = "${var.app_name} ${var.environment} ELB SG"
+    Environment                 = "${var.environment}"
     Type                        = "SecurityGroup"
   }
 }
@@ -137,8 +137,8 @@ resource "aws_instance" "ec2_instance" {
   key_name                      = "${var.key_pair_name}"
 
   tags {
-    Name                        = "ec2-${var.app_name}-${terraform.workspace}"
-    Environment                 = "${terraform.workspace}"
+    Name                        = "ec2-${var.app_name}-${var.environment}"
+    Environment                 = "${var.environment}"
     Type                        = "EC2"
   }
 }
@@ -156,7 +156,7 @@ resource "aws_volume_attachment" "ec2_instance_ebs_volume_att" {
 
 /* LOAD BALANCE */
 resource "aws_elb" "instance_elb" {
-  name                          = "${var.app_name}-${terraform.workspace}-elb"
+  name                          = "${var.app_name}-${var.environment}-elb"
   availability_zones            = ["${var.elb_availability_zones}"]
   security_groups               = ["${aws_security_group.elb_security_group.id}"]
   cross_zone_load_balancing     = true
