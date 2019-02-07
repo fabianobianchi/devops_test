@@ -159,7 +159,7 @@ resource "aws_volume_attachment" "ec2_instance_ebs_volume_att" {
   device_name                   = "/dev/sdh"
   volume_id                     = "${aws_ebs_volume.ec2_instance_ebs.id}"
   instance_id                   = "${aws_instance.ec2_instance.id}"
-  force_detach                  = "yes
+  force_detach                  = "yes"
 }
 
 /* LOAD BALANCE */
