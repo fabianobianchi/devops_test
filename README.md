@@ -15,8 +15,7 @@ module "Ci-cd" {
   source = "git@github.com:fabianobianchi/devops_test.git"
 
   aws_region                = "us-east-1"
-  ec2_availability_zone     = "us-east-1a"
-  elb_availability_zones    = "us-east-1a"
+  availability_zone         = "us-east-1a"
   vpc_id                    = "vpc-98cab1e3"
   subnet_id                 = "subnet-00978e2f"
   key_pair_name             = "development"
@@ -49,11 +48,10 @@ Terraform destroy
 | admin_ips | IP address list to limit SSH access to EC2 instance | List | ["0.0.0.0/0"] | NO |
 | users_ips | IP address list to limit WEB access to Jenkins | List | ["0.0.0.0/0"] | NO |
 | instance_type | Instance size of EC2 instance | String | "t2.small" | NO |
-| ec2_availability_zone | AWS availability zone which EC2 will run in | String | - | *YES* |
+| availability_zone | AWS availability zone which the solution will run in | String | - | *YES* |
 | subnet_id | AWS subnet id, Public subnet will allow external access, Private subnet will allow SSH access only via bastion server | String | - | *YES* |
 | key_pair_name | AWS Key pair, please create the key before this installation and provide de key name | String | - | *YES* |
 | ebs_volume_size | EBS volume size which will be attached to EC2 instance | String | "20" | NO |
-| elb_availability_zones | Availability zones list which ELB will distribute the traffic | String | - | *YES* |
 
 ## Outputs
 
