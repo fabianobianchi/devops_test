@@ -47,7 +47,7 @@ module "Ci-cd" {
 | application URL address | ELB address to access the applicaton |
 | jenkins_initial_password | Information about how to find the Initial Jenkins password in a easy way |
 
-TO ACCESS THE APPLICATION URL ADDRESS AND JENKINS INITIAL PASSWORD, PLEASE LOGIN INTO AWS CONSOLE GO TO EC2 --> PARAMETER STORE AND FIND jenkins/url_address AND jenkins/initial_password REGISTERS TO ACCESS EASILY THE RESOURCE.
+To access the application URL address and Jenkins initial Password, please login into AWS console and go to EC2 --> PARAMETER STORE and find the jenkins/url_address and jenkins/initial_password parameters value to access the information in an easy way.
 
 ## Features added
 
