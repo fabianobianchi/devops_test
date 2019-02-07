@@ -1,7 +1,6 @@
 
 variable "aws_region" {
   description   = "AWS region"  
-  default       = "us-east-1"
 }
 variable "app_name" {
   description   = "Application name"
@@ -28,7 +27,6 @@ variable "instance_type" {
 }
 variable "ec2_availability_zone" {
   description   = "AWS availability zone which EC2 will run"
-  default       = "us-east-1a"
 }
 variable "subnet_id" {
   description   = "AWS subnet id which will host the EC2 instance, to allow SSH over the internet insert a public subnet or use a bastion server to connect into a private subnet"
@@ -43,7 +41,6 @@ variable "ebs_volume_size" {
 
 variable "elb_availability_zones" {
   description   = "Availability zones which ELB will distribute the traffic"    
-  default       = ["us-east-1a" , "us-east-1b", "us-east-1c"]
 }
 variable "ec2tossm_role_file" {
   description   = "Json file name to create a role which allow EC2 Jenkins instance to access SSM"
