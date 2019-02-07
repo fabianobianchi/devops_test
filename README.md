@@ -22,6 +22,14 @@ module "Ci-cd" {
   key_pair_name             = "development"
 }
 ```
+PLAN CHANGES
+```hcl
+Terrafom plan
+```
+APPLY CHANGES
+```hcl
+Terraform apply
+```
 
 ## Variables
 
