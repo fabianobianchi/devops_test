@@ -4,9 +4,16 @@ provider "aws" {
 /* SSM PARAMETER TO STORE JENKINS INITIAL PASSWORD */
 
 resource "aws_ssm_parameter" "jenkins_initial_password" {
-  name                          = "jenkins_initial_password"
+  name                          = "jenkins/initial_password"
   type                          = "SecureString"
-  value                         = "Please check the initial password for Jenkins at AWS Console --> EC2 --> Parameter Store --> jenkins_initial_password after EC2 status check initialization phase"
+  value                         = "Please wait for EC2 instance status checks initialization"
+}
+
+/* SSM PARAMETER TO STORE APPLICATION URL ADDRESS */
+resource "aws_ssm_parameter" "jenkins_url" {
+  name                          = "jenkins/url_address"
+  type                          = "String"
+  value                         = "http://${aws_elb.instance_elb.dns_name}"
 }
 
 /* USER DATA TO RUN DURING EC2 INITIALIZATION */

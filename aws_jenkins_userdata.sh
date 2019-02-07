@@ -11,4 +11,4 @@ sudo docker run -u root --rm -d -p 8080:8080 -p 50000:50000 -v /mnt/jenkins:/mnt
 /bin/sleep 45
 ID=`sudo docker container ls -q`
 PASS=`sudo docker container exec -t $ID cat /var/jenkins_home/secrets/initialAdminPassword`
-aws ssm put-parameter --name 'jenkins_initial_password' --type "SecureString" --value $PASS --region us-east-1 --overwrite
+aws ssm put-parameter --name 'jenkins/initial_password' --type "SecureString" --value $PASS --region us-east-1 --overwrite

@@ -1,8 +1,15 @@
 # Devops_test
 Terraform code which creates an EC2 instance with Jenkins 
 
-## Module 
+## Module usage
 
+CLONE REMOTE REPOSITORY TO YOUR LOCAL MACHINE
+
+```hcl
+git clone git@github.com:fabianobianchi/devops_test.git
+```
+
+EDIT MODULE_JENKINS.TF FILE INSERTING YOUR CUSTOM VARIABLES AS THE FOLLOWING EXAMPLE 
 ```hcl
 module "Ci-cd" {
   source = "git@github.com:fabianobianchi/devops_test.git"
@@ -32,16 +39,15 @@ module "Ci-cd" {
 | key_pair_name | AWS Key pair, please create the key before this installation and provide de key name | - | YES |
 | ebs_volume_size | EBS volume size which will be attached to EC2 instance | "20" | NO |
 | elb_availability_zones | Availability zones list which ELB will distribute the traffic | - | YES |
-| ec2tossm_role_file | Json file name to create a role which allow EC2 Jenkins instance to access SSM | ec2toSSM_role.json | NO |
-| ec2tossm_policy_file | Json file name to create a policy which allow EC2 Jenkins instance to access SSM | ec2toSSM_policy.json" | NO |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| application URL acess | ELB address to access the applicaton |
-| AMI_id | Information about the image id choose to deploy the EC2 instance |
+| application URL address | ELB address to access the applicaton |
 | jenkins_initial_password | Information about how to find the Initial Jenkins password in a easy way |
+
+TO ACCESS THE APPLICATION URL ADDRESS AND JENKINS INITIAL PASSWORD, PLEASE LOGIN INTO AWS CONSOLE GO TO EC2 --> PARAMETER STORE AND FIND jenkins/url_address AND jenkins/initial_password REGISTERS TO ACCESS EASILY THE RESOURCE.
 
 ## Features added
 
@@ -51,7 +57,7 @@ The test requested to create an environment using elastic IP address however I d
 
 ### SSM Parameter
 
-A SSM parameter was created to store initial Jenkins password, this feature makes easier and faster to use the app, the original solution require to logon into the instance to find the initial password. The password uses securestring to protect it value, only AWS users with access into the SSM can extract the password, I recommend to change the password after the first login.
+A SSM parameter was created to store initial Jenkins password and Jenkins URL address, this feature makes easier and faster to use the app, the original solution require to logon into the instance to find the initial password and find the Load Balance address in AWS console. The password uses securestring to protect its value, only AWS users with access into the SSM can extract the password. I recommend to change the password after the first login.
 
 ### Security
 
