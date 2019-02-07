@@ -37,6 +37,8 @@ DESTROY THE ENVIRONMENT
 ```hcl
 Terraform destroy
 ```
+eg. The script was done to force ebs detach and consequently remove the ebs, this behaviour can result in data loss and it was implemented only for development purpose
+
 ## Variables
 
 | Name | Description | Type | Default value |Required |
