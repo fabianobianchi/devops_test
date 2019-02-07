@@ -136,7 +136,7 @@ resource "aws_security_group" "elb_security_group" {
 resource "aws_instance" "ec2_instance" {
   ami                           = "${data.aws_ami.ami_linux.id}"
   instance_type                 = "${var.instance_type}"
-  availability_zone             = "${var.ec2_availability_zone}"
+  availability_zone             = "${var.availability_zone}"
   vpc_security_group_ids        = ["${aws_security_group.ec2_security_group.id}"]
   subnet_id                     = "${var.subnet_id}"
   user_data                     = "${data.template_file.userdata.rendered}"
@@ -152,7 +152,7 @@ resource "aws_instance" "ec2_instance" {
 /* EBS VOLUME */
 
 resource "aws_ebs_volume" "ec2_instance_ebs" {
-  availability_zone = "${var.ec2_availability_zone}"
+  availability_zone = "${var.availability_zone}"
   size              = "${var.ebs_volume_size}"
 }
 resource "aws_volume_attachment" "ec2_instance_ebs_volume_att" {
@@ -164,7 +164,7 @@ resource "aws_volume_attachment" "ec2_instance_ebs_volume_att" {
 /* LOAD BALANCE */
 resource "aws_elb" "instance_elb" {
   name                          = "${var.app_name}-${var.environment}-elb"
-  availability_zones            = ["${var.elb_availability_zones}"]
+  availability_zones            = ["${var.availability_zone}"]
   security_groups               = ["${aws_security_group.elb_security_group.id}"]
   cross_zone_load_balancing     = true
   connection_draining           = true
