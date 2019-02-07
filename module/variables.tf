@@ -29,7 +29,7 @@ variable "availability_zone" {
   description   = "AWS availability zone which the solution will run in"
 }
 variable "subnet_id" {
-  description   = "AWS subnet id which will host the EC2 instance, to allow SSH over the internet insert a public subnet or use a bastion server to connect into a private subnet"
+  description   = "AWS public subnet id which will host the EC2 instance"
 }
 variable "key_pair_name" {
   description   = "SSH key pair to allow connection to the instance"  
