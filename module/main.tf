@@ -4,14 +4,14 @@ provider "aws" {
 /* SSM PARAMETER TO STORE JENKINS INITIAL PASSWORD */
 
 resource "aws_ssm_parameter" "jenkins_initial_password" {
-  name                          = "jenkins/initial_password"
+  name                          = "/jenkins/initial_password"
   type                          = "SecureString"
   value                         = "Please wait for EC2 instance status checks initialization"
 }
 
 /* SSM PARAMETER TO STORE APPLICATION URL ADDRESS */
 resource "aws_ssm_parameter" "jenkins_url" {
-  name                          = "jenkins/url_address"
+  name                          = "/jenkins/url_address"
   type                          = "String"
   value                         = "http://${aws_elb.instance_elb.dns_name}"
 }
