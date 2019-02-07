@@ -44,9 +44,9 @@ variable "elb_availability_zones" {
 }
 variable "ec2tossm_role_file" {
   description   = "Json file name to create a role which allow EC2 Jenkins instance to access SSM"
-  default       = "devops_test/ec2toSSM_role.json"
+  default       = "./ec2toSSM_role.json"
 }
 variable "ec2tossm_policy_file" {
   description   = "Json file name to create a policy which allow EC2 Jenkins instance to access SSM"
-  default       = "devops_test/ec2toSSM_policy.json"
+  default       = "./ec2toSSM_policy.json"
 }
