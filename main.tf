@@ -18,10 +18,10 @@ data "template_file" "userdata" {
 /* IAM ROLE AND POLICIES TO ALLOW EC2 TO ACCESS SSM */
 
 data "template_file" "EC2toSSM_role" {
-  template                      = "${file("ec2toSSM_role.json")}"
+  template                      = "${file("var.ec2tossm_role_file")}"
 }
 data "template_file" "EC2toSSM_policy" {
-  template                      = "${file("ec2toSSM_policy.json")}"
+  template                      = "${file("${var.ec2tossm_policy_file")}"
 }
 
 resource "aws_iam_role" "EC2toSSM_role" {
