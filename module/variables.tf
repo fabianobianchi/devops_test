@@ -25,8 +25,8 @@ variable "instance_type" {
   description   = "The instance type"
   default       = "t2.small"    
 }
-variable "ec2_availability_zone" {
-  description   = "AWS availability zone which EC2 will run"
+variable "availability_zone" {
+  description   = "AWS availability zone which the solution will run in"
 }
 variable "subnet_id" {
   description   = "AWS subnet id which will host the EC2 instance, to allow SSH over the internet insert a public subnet or use a bastion server to connect into a private subnet"
@@ -37,8 +37,4 @@ variable "key_pair_name" {
 variable "ebs_volume_size" {
   description   = "EBS volume size" 
   default       = "20"
-}
-
-variable "elb_availability_zones" {
-  description   = "Availability zones which ELB will distribute the traffic"   
 }
