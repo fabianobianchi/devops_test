@@ -85,6 +85,7 @@ I recommend to implement a backup job to prevent Jenkins configuration loss.
 ## Author 
 
 Fabiano Bianchi
+
 personal email: bianchi_fabiano@yahoo.com.br
 
 ## Code version 
