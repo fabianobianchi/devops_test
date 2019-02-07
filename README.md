@@ -22,6 +22,10 @@ module "Ci-cd" {
   key_pair_name             = "development"
 }
 ```
+INITIALIZE TERRAFORM
+```hcl
+Terrafom init
+```
 PLAN CHANGES
 ```hcl
 Terrafom plan
