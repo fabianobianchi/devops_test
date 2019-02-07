@@ -40,8 +40,7 @@ variable "ebs_volume_size" {
 }
 
 variable "elb_availability_zones" {
-  description   = "Availability zones which ELB will distribute the traffic"  
-  type          = "list"  
+  description   = "Availability zones which ELB will distribute the traffic"   
 }
 variable "ec2tossm_role_file" {
   description   = "Json file name to create a role which allow EC2 Jenkins instance to access SSM"
