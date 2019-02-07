@@ -12,7 +12,7 @@ resource "aws_ssm_parameter" "jenkins_initial_password" {
 /* USER DATA TO RUN DURING EC2 INITIALIZATION */
 
 data "template_file" "userdata" {
-  template                      = "${file("${path.module}/aws_jenkins_userdata.sh")}"
+  template                      = "${file("aws_jenkins_userdata.sh")}"
 }
 
 /* IAM ROLE AND POLICIES TO ALLOW EC2 TO ACCESS SSM */
