@@ -40,7 +40,7 @@ resource "aws_iam_role_policy_attachment" "policy_attachment" {
     policy_arn                  = "${aws_iam_policy.EC2toSSM_policy.arn}"
 }
 resource "aws_iam_instance_profile" "instance_profile" {
-  name                          = "${var.app_name}-${var.environment}-instanceprofile"
+  name                          = "${var.app_name}-${var.environment}-instance-profile"
   path                          = "/"
   role                          = "${aws_iam_role.EC2toSSM_role.id}"
 }
