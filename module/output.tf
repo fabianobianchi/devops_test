@@ -1,11 +1,6 @@
-output "application URL acess" {
+output "application_url_access" {
   description = "The IP address which will be used to connect into the application"
   value       = "http://${aws_elb.instance_elb.dns_name}"
-}
-
-output "AMI_id" {
-  description = "The Amazon Linux HVM x86_64 AMI ID"
-  value       = "${data.aws_ami.ami_linux.id}"
 }
 
 output "jenkins_initial_password" {
