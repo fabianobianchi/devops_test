@@ -51,7 +51,7 @@ eg. The script was done to force ebs detach and consequently remove the ebs, thi
 | users_ips | IP address list to limit WEB access to Jenkins | List | ["0.0.0.0/0"] | NO |
 | instance_type | Instance size of EC2 instance | String | "t2.small" | NO |
 | availability_zone | AWS availability zone which the solution will run in | String | - | *YES* |
-| subnet_id | AWS subnet id, Public subnet will allow external access, Private subnet will allow SSH access only via bastion server | String | - | *YES* |
+| subnet_id | AWS public subnet id | String | - | *YES* |
 | key_pair_name | AWS Key pair, please create the key before this installation and provide de key name | String | - | *YES* |
 | ebs_volume_size | EBS volume size which will be attached to EC2 instance | String | "20" | NO |
 
