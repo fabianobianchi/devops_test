@@ -18,7 +18,7 @@ data "template_file" "userdata" {
 /* IAM ROLE AND POLICIES TO ALLOW EC2 TO ACCESS SSM */
 
 data "template_file" "EC2toSSM_role" {
-  template                      = "${file("${var.path.module}/ec2toSSM_role.json")}"
+  template                      = "${file("${path.module}/ec2toSSM_role.json")}"
 }
 data "template_file" "EC2toSSM_policy" {
   template                      = "${file("${path.module}/ec2toSSM_policy.json")}"
