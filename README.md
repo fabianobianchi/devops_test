@@ -34,7 +34,10 @@ APPLY CHANGES
 ```hcl
 Terraform apply
 ```
-
+DESTROY THE ENVIRONMENT
+```hcl
+Terraform destroy
+```
 ## Variables
 
 | Name | Description | Type | Default value |Required |
